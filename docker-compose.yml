@@ -1,0 +1,23 @@
+services:
+
+  source:
+    image: espinoza09/docker-pipes-source:latest
+    container_name: docker-pipes-source
+    hostname: docker-pipes-source
+    # restart: always
+    volumes:
+    - ./pipes/pipe:/home/rocky/pipe:rw,z
+    links:
+      - dest
+    tty: true
+    stdin_open: true
+
+  dest:
+    image: espinoza09/docker-pipes-dest:latest
+    container_name: docker-pipes-dest
+    hostname: docker-pipes-dest
+    # restart: always
+    volumes:
+    - ./pipes/pipe:/home/rocky/pipe:rw,z
+    tty: true
+    stdin_open: true
